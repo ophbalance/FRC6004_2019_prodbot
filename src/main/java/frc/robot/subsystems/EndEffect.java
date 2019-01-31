@@ -10,6 +10,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.commands.*;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.Victor;
 
 
@@ -22,14 +23,17 @@ public class EndEffect extends Subsystem {
   Victor swivel = null;
   Victor in_n_out = null;
 
-
-  DifferentialDrive effectorRun = null;
-
-
+  SpeedControllerGroup mover = new SpeedControllerGroup(left, right);
   
-  @Override
   public void initDefaultCommand() {
-    effectorRun = new DifferentialDrive(left, right);
     setDefaultCommand(new EffectorGo());
+  }
+
+  public void away(double endSpeed) {
+    mover.set(-endSpeed);
+  }
+
+  public void go(double endSpeed) {
+    mover.set(endSpeed);
   }
 }
