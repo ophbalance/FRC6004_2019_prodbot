@@ -8,6 +8,7 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.commands.*;
 import edu.wpi.first.wpilibj.Victor;
 
@@ -21,9 +22,14 @@ public class EndEffect extends Subsystem {
   Victor swivel = null;
   Victor in_n_out = null;
 
+
+  DifferentialDrive effectorRun = null;
+
+
+  
   @Override
   public void initDefaultCommand() {
-    // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
+    effectorRun = new DifferentialDrive(left, right);
+    setDefaultCommand(new EffectorGo());
   }
 }

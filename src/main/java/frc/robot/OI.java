@@ -25,7 +25,7 @@ public class OI {
   public OI () {
 
     upLift.whileHeld(new LiftUp());
-    effectForward.whileHeld(new EffectorForward());
+    effectForward.whileHeld(new EffectorGo());
   }
   //// CREATING BUTTONS
   // One type of button is a joystick button which is any button on a

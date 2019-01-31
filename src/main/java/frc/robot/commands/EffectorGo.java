@@ -13,8 +13,8 @@ import frc.robot.Robot;
 /**
  * An example command.  You can replace me with your own command.
  */
-public class EffectorForward extends Command {
-  public EffectorForward() {
+public class EffectorGo extends Command {
+  public EffectorGo() {
     // Use requires() here to declare subsystem dependencies
     requires(Robot.r_effect);
   }
