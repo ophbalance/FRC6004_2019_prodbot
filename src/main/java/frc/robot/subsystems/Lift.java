@@ -12,7 +12,8 @@ public class Lift extends Subsystem {
     
     // Motor Controllers
 	Victor liftDrive = null;
-	
+    Victor rightDrive = null;
+
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         // Define the motor and set it to zero

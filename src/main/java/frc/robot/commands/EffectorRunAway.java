@@ -38,5 +38,6 @@ public class EffectorRunAway extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+      Robot.r_effect.update(0);
   }
 }
