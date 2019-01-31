@@ -24,8 +24,12 @@ public class EndEffect extends Subsystem {
   Victor in_n_out = null;
 
   public void initDefaultCommand() {
+
     left = new Victor(RobotMap.END_VICTOR_LEFT);
     right = new Victor(RobotMap.END_VICTOR_RIGHT);
+    swivel = new Victor(RobotMap.END_VICTOR_TILT);
+    in_n_out = new Victor(RobotMap.END_VICTOR_CLAW);
+
     setDefaultCommand(new EffectorGo());
   }
   public void update(double endSpeed) {
@@ -42,4 +46,21 @@ public class EndEffect extends Subsystem {
     left.set(endSpeed);
     right.set(endSpeed);
   }
+  
+  public void tiltUp(double endSpeed) {
+    swivel.set(endSpeed);
+  }
+
+  public void tiltDown(double endSpeed) {
+    swivel.set(-endSpeed);
+  }
+
+  public void close(double endSpeed) {
+    in_n_out.set(endSpeed);
+  }
+
+  public void open(double endSpeed) {
+    in_n_out.set(-endSpeed);
+  }
+
 }
