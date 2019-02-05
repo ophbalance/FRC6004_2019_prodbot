@@ -2,7 +2,7 @@ package frc.robot.subsystems;
 
 import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.VictorSP;
 import frc.robot.commands.*;
 
 /**
@@ -11,13 +11,13 @@ import frc.robot.commands.*;
 public class Lift extends Subsystem {
     
     // Motor Controllers
-	Victor liftDrive = null;
-    Victor rightDrive = null;
+	VictorSP liftDrive = null;
+    //Victor rightDrive = null;
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         // Define the motor and set it to zero
-       liftDrive = new Victor(RobotMap.LIFT_VICTOR);
+       liftDrive = new VictorSP(RobotMap.LIFT_VICTOR);
        setDefaultCommand(new LiftCommand());
     }
     

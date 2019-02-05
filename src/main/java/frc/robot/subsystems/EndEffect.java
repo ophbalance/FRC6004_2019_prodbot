@@ -9,8 +9,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.commands.*;
-import edu.wpi.first.wpilibj.SpeedControllerGroup;
-import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.Spark;
 import frc.robot.RobotMap;
 
 
@@ -18,17 +17,17 @@ import frc.robot.RobotMap;
 public class EndEffect extends Subsystem {
   
   //Motor Time!
-  Victor left = null;
-  Victor right = null;
-  Victor swivel = null;
-  Victor in_n_out = null;
+  Spark left = null;
+  Spark right = null;
+  Spark swivel = null;
+  Spark in_n_out = null;
 
   public void initDefaultCommand() {
 
-    left = new Victor(RobotMap.END_VICTOR_LEFT);
-    right = new Victor(RobotMap.END_VICTOR_RIGHT);
-    swivel = new Victor(RobotMap.END_VICTOR_TILT);
-    in_n_out = new Victor(RobotMap.END_VICTOR_CLAW);
+    left = new Spark(RobotMap.END_VICTOR_LEFT);
+    right = new Spark(RobotMap.END_VICTOR_RIGHT);
+    swivel = new Spark(RobotMap.END_VICTOR_TILT);
+    in_n_out = new Spark(RobotMap.END_VICTOR_CLAW);
 
     setDefaultCommand(new EffectorGo());
   }

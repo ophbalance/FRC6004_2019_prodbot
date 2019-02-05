@@ -16,17 +16,24 @@ import frc.robot.commands.*;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
+  
   public Joystick driverController = new Joystick(RobotMap.OI_DRIVER_CONTROLLER);
   public Joystick opController = new Joystick(RobotMap.OI_OP_CONTROLLER);
   
-  public Button upLift = new JoystickButton(opController, 5);
+  //public Button upLift = new JoystickButton(opController, 5);
   public Button effectForward = new JoystickButton(opController, 4);
   public Button effectBackward = new JoystickButton(opController, 2);
+  public Button effectOpen = new JoystickButton(opController, 3);
+  public Button effectClose = new JoystickButton(opController, 5);
+
   public OI () {
 
-    upLift.whileHeld(new LiftUp());
+    //upLift.whileHeld(new LiftUp());
     effectForward.whileHeld(new EffectorGo());
     effectBackward.whileHeld(new EffectorRunAway());
+    effectOpen.whileHeld(new EffectOpen());
+    effectClose.whileHeld(new EffectClose());
+    
   }
   //// CREATING BUTTONS
   // One type of button is a joystick button which is any button on a
