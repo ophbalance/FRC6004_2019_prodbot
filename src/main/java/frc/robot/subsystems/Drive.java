@@ -3,30 +3,30 @@ package frc.robot.subsystems;
 import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import edu.wpi.first.wpilibj.SpeedControllerGroup;
-import edu.wpi.first.wpilibj.Victor;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import frc.robot.commands.*;
 
 public class Drive extends Subsystem {
 
     //Motor Controller Statements
-    Victor leftFront = null;
-    Victor leftRear = null;
-    Victor rightFront = null;
-    Victor rightRear = null;
+    WPI_TalonSRX leftFront = null;
+    VictorSPX leftRear = null;
+    WPI_TalonSRX rightFront = null;
+    VictorSPX rightRear = null;
     
     DifferentialDrive robotDrive = null;
 
     public Drive() {
-        leftFront = new Victor(RobotMap.LEFT_FRONT_VICTOR);
-        leftRear = new Victor(RobotMap.LEFT_REAR_VICTOR);
-        SpeedControllerGroup m_left = new SpeedControllerGroup(leftFront, leftRear);
+        leftFront = new WPI_TalonSRX(RobotMap.LEFT_FRONT_VICTOR);
+        leftRear = new VictorSPX(RobotMap.LEFT_REAR_VICTOR);
+        leftRear.follow(leftFront);
 
-        rightFront = new Victor(RobotMap.RIGHT_FRONT_VICTOR);
-        rightRear = new Victor(RobotMap.RIGHT_REAR_VICTOR);
-        SpeedControllerGroup m_right = new SpeedControllerGroup(rightFront, rightRear);
+        rightFront = new WPI_TalonSRX(RobotMap.RIGHT_FRONT_VICTOR);
+        rightRear = new VictorSPX(RobotMap.RIGHT_REAR_VICTOR);
+        rightRear.follow(rightFront);
 
-        robotDrive = new DifferentialDrive(m_left, m_right);
+        robotDrive = new DifferentialDrive(leftFront, rightFront);
     }
     
     public void arcadeDrive(double leftSpeed, double rightSpeed) {
