@@ -25,6 +25,8 @@ public class OI {
   public Button effectBackward = new JoystickButton(opController, 2);
   public Button effectOpen = new JoystickButton(opController, 3);
   public Button effectClose = new JoystickButton(opController, 5);
+  public Button effectTiltUp = new JoystickButton(opController, 6);
+  public Button effectTiltDown = new JoystickButton(opController, 7);
 
   public OI () {
 
@@ -33,6 +35,8 @@ public class OI {
     effectBackward.whileHeld(new EffectorRunAway());
     effectOpen.whileHeld(new EffectOpen());
     effectClose.whileHeld(new EffectClose());
+    effectTiltUp.whileHeld(new EffectUp());
+    effectTiltDown.whileHeld(new EffectDown());
     
   }
   //// CREATING BUTTONS

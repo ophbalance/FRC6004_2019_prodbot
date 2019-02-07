@@ -30,6 +30,7 @@ public class Robot extends TimedRobot {
   public static Lift r_lift = null;
   public static Drive r_drive = null;
   public static EndEffect r_effect = null;
+  public static EndGame r_gamer_time = null;
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -44,6 +45,7 @@ public class Robot extends TimedRobot {
     r_drive = new Drive();
     r_effect = new EndEffect();
     m_oi = new OI();
+    r_gamer_time = new EndGame();
     m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);

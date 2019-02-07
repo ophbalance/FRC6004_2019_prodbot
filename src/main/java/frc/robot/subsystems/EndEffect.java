@@ -34,6 +34,8 @@ public class EndEffect extends Subsystem {
   public void update(double endSpeed) {
    left.set(endSpeed);
    right.set(endSpeed);
+   swivel.set(endSpeed);
+   in_n_out.set(endSpeed);
   }
 
   public void away(double endSpeed) {
