@@ -39,7 +39,7 @@ public class OI {
     effectClose.whileHeld(new EffectClose());
     effectTiltUp.whileHeld(new EffectUp());
     effectTiltDown.whileHeld(new EffectDown());
-    driveTest.whenPressed(new TimedDriveTest(5.0));
+    
     
   }
   //// CREATING BUTTONS

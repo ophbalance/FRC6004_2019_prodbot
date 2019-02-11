@@ -41,14 +41,12 @@ public class Drive extends Subsystem {
         setDefaultCommand(new TeleopDrive());
     }
 
-    public void update(double zoomZoom) {
-      leftFront.set(zoomZoom);
-      rightFront.set(zoomZoom);
+    public void update(double y, double x) {
+      robotDrive.arcadeDrive(y, x);
     }
 
-    public void drive(double zoomZoom) {
-        leftFront.set(zoomZoom);
-        rightFront.set(zoomZoom);
+    public void drive(double y, double x) {
+        robotDrive.arcadeDrive(y, x);
     }
 
 }

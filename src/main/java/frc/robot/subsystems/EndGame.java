@@ -19,7 +19,7 @@ public class EndGame extends Subsystem {
     rear = new VictorSP(RobotMap.END_GAME_REAR);
     gotta_go_fast = new VictorSP(RobotMap.END_GAME_DRIVE);
     
-    setDefaultCommand(new EndSanic());
+    setDefaultCommand(new EndSanic(0));
   }
 
   public void update(double gameSpeed) {
