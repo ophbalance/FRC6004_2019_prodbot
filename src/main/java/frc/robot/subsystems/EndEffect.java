@@ -8,7 +8,7 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-import frc.robot.commands.*;
+import frc.robot.commands.effector.*;
 import edu.wpi.first.wpilibj.Spark;
 import frc.robot.RobotMap;
 

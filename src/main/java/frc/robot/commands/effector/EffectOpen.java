@@ -1,4 +1,4 @@
-package frc.robot.commands;
+package frc.robot.commands.effector;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
@@ -6,8 +6,8 @@ import frc.robot.Robot;
 /**
  * An example command.  You can replace me with your own command.
  */
-public class EffectClose extends Command {
-  public EffectClose() {
+public class EffectOpen extends Command {
+  public EffectOpen() {
     // Use requires() here to declare subsystem dependencies
     requires(Robot.r_effect);
   }
@@ -20,7 +20,7 @@ public class EffectClose extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.r_effect.close(.50);
+    Robot.r_effect.open(.50);
   }
 
   // Make this return true when this Command no longer needs to run execute()

@@ -1,4 +1,4 @@
-package frc.robot.commands;
+package frc.robot.commands.game_ended;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
@@ -6,10 +6,10 @@ import frc.robot.Robot;
 /**
  * An example command.  You can replace me with your own command.
  */
-public class EffectUp extends Command {
-  public EffectUp() {
+public class EndSanic extends Command {
+  public EndSanic() {
     // Use requires() here to declare subsystem dependencies
-    requires(Robot.r_effect);
+    requires(Robot.r_gamer_time);
   }
 
   // Called just before this Command runs the first time
@@ -20,7 +20,7 @@ public class EffectUp extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.r_effect.tiltUp(.50);
+    Robot.r_gamer_time.sanic(.50);
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -38,6 +38,6 @@ public class EffectUp extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-      Robot.r_effect.update(0);
+    Robot.r_gamer_time.update(0);
   }
 }

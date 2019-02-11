@@ -3,7 +3,8 @@ package frc.robot.subsystems;
 import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.VictorSP;
-import frc.robot.commands.*;
+import frc.robot.commands.game_ended.*;
+
 
 public class EndGame extends Subsystem {
   //Again, it's motor time
@@ -18,6 +19,7 @@ public class EndGame extends Subsystem {
     rear = new VictorSP(RobotMap.END_GAME_REAR);
     gotta_go_fast = new VictorSP(RobotMap.END_GAME_DRIVE);
     
+    setDefaultCommand(new EndSanic());
   }
 
   public void update(double gameSpeed) {

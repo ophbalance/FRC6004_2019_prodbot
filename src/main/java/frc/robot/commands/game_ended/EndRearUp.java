@@ -1,4 +1,4 @@
-package frc.robot.commands;
+package frc.robot.commands.game_ended;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
@@ -6,8 +6,8 @@ import frc.robot.Robot;
 /**
  * An example command.  You can replace me with your own command.
  */
-public class EndDown extends Command {
-  public EndDown() {
+public class EndRearUp extends Command {
+  public EndRearUp() {
     // Use requires() here to declare subsystem dependencies
     requires(Robot.r_gamer_time);
   }
@@ -20,7 +20,7 @@ public class EndDown extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.r_gamer_time.down(.50);
+    Robot.r_gamer_time.rearUp(.50);
   }
 
   // Make this return true when this Command no longer needs to run execute()
