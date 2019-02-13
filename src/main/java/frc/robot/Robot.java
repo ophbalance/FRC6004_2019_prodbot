@@ -14,7 +14,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.ExampleSubsystem;
-
+import com.ctre.phoenix.motorcontrol.NeutralMode;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.DemandType;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import frc.robot.subsystems.*;
 
 /**
@@ -31,6 +35,10 @@ public class Robot extends TimedRobot {
   public static Drive r_drive = null;
   public static EndEffect r_effect = null;
   public static EndGame r_gamer_time = null;
+  TalonSRX _leftMaster = new TalonSRX(11);
+    TalonSRX _rightMaster = new TalonSRX(10);
+    VictorSPX _leftFollow = new VictorSPX(13);
+    VictorSPX _rightFollow = new VictorSPX(12);
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -122,6 +130,21 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
+    /* Ensure motor output is neutral during init */
+    _leftMaster.set(ControlMode.PercentOutput, 0);
+    _rightMaster.set(ControlMode.PercentOutput, 0);
+
+    /* Factory Default all hardware to prevent unexpected behaviour */
+    _leftMaster.configFactoryDefault();
+    _rightMaster.configFactoryDefault();
+    
+    /* Set Neutral mode */
+    _leftMaster.setNeutralMode(NeutralMode.Brake);
+    _rightMaster.setNeutralMode(NeutralMode.Brake);
+    
+    /* Configure output direction */
+    _leftMaster.setInverted(false);
+    _rightMaster.setInverted(true);
   }
 
   /**
@@ -130,7 +153,31 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
+    /* Gamepad processing */
+    double forward = -1 * m_oi.driverController.getY();
+    double turn = m_oi.driverController.getTwist();      
+    forward = Deadband(forward);
+    turn = Deadband(turn);
+
+    /* Arcade Drive using PercentOutput along with Arbitrary Feed Forward supplied by turn */
+    _leftMaster.set(ControlMode.PercentOutput, forward, DemandType.ArbitraryFeedForward, +turn);
+    _rightMaster.set(ControlMode.PercentOutput, forward, DemandType.ArbitraryFeedForward, -turn);
   }
+
+/** Deadband 5 percent, used on the gamepad */
+double Deadband(double value) {
+  /* Upper deadband */
+  if (value >= +0.25) 
+      return value;
+  
+  /* Lower deadband */
+  if (value <= -0.25)
+      return value;
+  
+  /* Outside deadband */
+  return 0;
+}
+
 
   /**
    * This function is called periodically during test mode.
