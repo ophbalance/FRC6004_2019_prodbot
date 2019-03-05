@@ -32,10 +32,10 @@ public class Robot extends TimedRobot {
   public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
   public static OI m_oi;
   public static Lift r_lift = null;
-  public static Drive r_drive = null;
   public static EndEffect r_effect = null;
   public static EndGame r_gamer_time = null;
-  TalonSRX _leftMaster = new TalonSRX(11);
+  public static DummyEnd _end = null;
+    TalonSRX _leftMaster = new TalonSRX(11);
     TalonSRX _rightMaster = new TalonSRX(10);
     VictorSPX _leftFollow = new VictorSPX(13);
     VictorSPX _rightFollow = new VictorSPX(12);
@@ -50,10 +50,10 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     r_lift = new Lift();
-    r_drive = new Drive();
     r_effect = new EndEffect();
     m_oi = new OI();
     r_gamer_time = new EndGame();
+    _end = new DummyEnd();
     m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
@@ -138,6 +138,9 @@ public class Robot extends TimedRobot {
     _leftMaster.configFactoryDefault();
     _rightMaster.configFactoryDefault();
     
+
+    _leftFollow.follow(_leftMaster);
+    _rightFollow.follow(_rightMaster);
     /* Set Neutral mode */
     _leftMaster.setNeutralMode(NeutralMode.Brake);
     _rightMaster.setNeutralMode(NeutralMode.Brake);

@@ -11,13 +11,14 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
+
 /**
  * This is the teleop command to drive the lift
  */
-public class LiftCommand extends Command {
-  public LiftCommand() {
+public class Ree extends Command {
+  public Ree() {
     // Use requires() here to declare subsystem dependencies
-    requires(Robot.r_lift);
+    requires(Robot._end);
   }
 
   // Called just before this Command runs the first time
@@ -28,7 +29,7 @@ public class LiftCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    //Robot.r_lift.update(Robot.m_oi.opController.getRawAxis(RobotMap.OP_PITCH));
+    Robot.r_lift.update(Robot.m_oi.opController.getRawAxis(RobotMap.OP_RIGHT));
   }
 
   // Make this return true when this Command no longer needs to run execute()
