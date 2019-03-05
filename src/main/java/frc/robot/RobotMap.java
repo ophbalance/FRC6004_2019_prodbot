@@ -49,8 +49,6 @@ public class RobotMap {
   public static final int DRIVER_LEVER = 3;
 
   //OP Controller Variable Control
-  public static final int OP_LEFT = 1;
-  public static final int OP_RIGHT = 5;
-  public static final int OP_YAW = 2;
-  public static final int OP_LEVER = 3;
+  public static final int OP_PITCH = 1;
+  public static final int OP_ROLL = 0;
 }

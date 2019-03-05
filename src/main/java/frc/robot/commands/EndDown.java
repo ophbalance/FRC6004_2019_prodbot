@@ -1,15 +1,14 @@
-package frc.robot.commands.game_ended;
+package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.command.TimedCommand;
+import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 /**
  * An example command.  You can replace me with your own command.
  */
-public class EndDown extends TimedCommand {
-  public EndDown(double timeout) {
+public class EndDown extends Command {
+  public EndDown() {
     // Use requires() here to declare subsystem dependencies
-    super(timeout);
     requires(Robot.r_gamer_time);
   }
 

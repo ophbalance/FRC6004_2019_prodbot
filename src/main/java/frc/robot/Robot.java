@@ -34,7 +34,6 @@ public class Robot extends TimedRobot {
   public static Lift r_lift = null;
   public static EndEffect r_effect = null;
   public static EndGame r_gamer_time = null;
-  public static DummyEnd _end = null;
     TalonSRX _leftMaster = new TalonSRX(11);
     TalonSRX _rightMaster = new TalonSRX(10);
     VictorSPX _leftFollow = new VictorSPX(13);
@@ -53,7 +52,6 @@ public class Robot extends TimedRobot {
     r_effect = new EndEffect();
     m_oi = new OI();
     r_gamer_time = new EndGame();
-    _end = new DummyEnd();
     m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);

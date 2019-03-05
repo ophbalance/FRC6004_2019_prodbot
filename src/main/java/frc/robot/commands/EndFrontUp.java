@@ -1,15 +1,14 @@
-package frc.robot.commands.game_ended;
+package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.command.TimedCommand;
+import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 /**
  * An example command.  You can replace me with your own command.
  */
-public class EndSanic extends TimedCommand {
-  public EndSanic(double timeout) {
+public class EndFrontUp extends Command {
+  public EndFrontUp() {
     // Use requires() here to declare subsystem dependencies
-    super(timeout);
     requires(Robot.r_gamer_time);
   }
 
@@ -21,7 +20,7 @@ public class EndSanic extends TimedCommand {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.r_gamer_time.sanic(.50);
+    Robot.r_gamer_time.frontUp(.50);
   }
 
   // Make this return true when this Command no longer needs to run execute()
